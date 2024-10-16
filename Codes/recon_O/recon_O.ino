@@ -1,7 +1,7 @@
 /*
  *   Project Recon 
  *   This Project is to learn the logic behind walking and maneuver of Robots,
- *   Version: 2.0
+ *   Version: 2.1
  *   Version Date: 2024-August-30
  *
  *   Release Notes : This version contain serial command center to control the robot 
@@ -24,7 +24,6 @@ const int numChannels = 6;
 
 unsigned long pulseWidths[numChannels];
 int channelValues[numChannels];
-
 
 // Threshold values for mizn and max pulse widths used for RC
 const int minValue = 1000;
@@ -63,6 +62,8 @@ unsigned long TIME_INTERVAL = 35000; // Timeout in microseconds (adjust based on
 #define BODY_LEFT 't'
 #define BODY_RIGHT 'w'
 
+#define SITWIGGLE 'i'
+
 //i have an awsom idea for this mode wait for the release
 #define WHEEL_MODE 'n'
 
@@ -81,9 +82,7 @@ void setup() {
   for (int i = 0; i < numChannels; i++) {
     pinMode(channelPins[i], INPUT);
   }
-
   randomSeed(analogRead(A7)); // getting seed for random
-
   robot.init();
   delay(2000);
 }
@@ -159,7 +158,7 @@ boolean  gaits(char cmd) {
       robot.home();
       break;
     case HELLO:
-      robot.hello();
+      robot.hello(Speed);
       break;
     case PUSH_UP:
       robot.pushUp(1, Speed);
@@ -189,7 +188,9 @@ boolean  gaits(char cmd) {
     case WHEEL_MODE:
     robot.wheelmode();
     break;
-
+    case SITWIGGLE:
+    robot.sitwiggle();
+    break;
     default:
       taken = false;
   }
@@ -261,7 +262,7 @@ void auto_gaits(int pattern) {
       robot.home();
       break;
     case HELLO:
-      robot.hello();
+      robot.hello(Speed);
       break;
     case PUSH_UP:
       robot.pushUp(1, Speed);

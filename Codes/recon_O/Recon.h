@@ -26,6 +26,7 @@ class Recon {
     void sit();
     void crabstand();
     void twerk();
+    void sitwiggle();
     //Custom Function
 
     void init();
@@ -38,7 +39,7 @@ class Recon {
     void dance(float steps, float period);
     void upDown(float steps, float period);
     void pushUp(float steps, float period);
-    void hello();
+    void hello(int T);
     
     void home();
     void frontBack(float steps, float period);

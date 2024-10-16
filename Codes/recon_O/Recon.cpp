@@ -47,18 +47,18 @@ void Recon::init() {
   home();
 }
 
-// Some of my custom Function to play with the robot. 
+// Some of my custom Function to play with the robot.
 // Dont forget to declare, Define and Call your Custom function in Recon.h, Recon.cpp, recon.main respectively  (Basic OPPS Concept)
 
 // Custom Functions
 
 void Recon::bodyRight(float steps, float T = 600) {
   int x_amp = 35;
-  int z_amp = 15;  
-  int ap = 15;     
-  int hi = 50;     
+  int z_amp = 15;
+  int ap = 15;
+  int hi = 50;
 
-  float period[] = { T, T, T, T, T, T, T, T };  
+  float period[] = { T, T, T, T, T, T, T, T };
 
   int amplitude[] = { 0, 0, 0, 0, x_amp, x_amp, 0, 0 };
 
@@ -71,11 +71,11 @@ void Recon::bodyRight(float steps, float T = 600) {
 
 void Recon::bodyLeft(float steps, float T = 600) {
   int x_amp = 35;
-  int z_amp = 15;  
-  int ap = 15;     
-  int hi = 50;     
+  int z_amp = 15;
+  int ap = 15;
+  int hi = 50;
 
-  float period[] = { T, T, T, T, T, T, T, T };  
+  float period[] = { T, T, T, T, T, T, T, T };
 
   int amplitude[] = { 0, 0, 0, 0, x_amp, x_amp, 0, 0 };
 
@@ -87,14 +87,14 @@ void Recon::bodyLeft(float steps, float T = 600) {
 }
 
 void Recon::adjustHeight(int heightPercentage) {
-  
+
   heightPercentage = constrain(heightPercentage, 0, 100);
   int ap = 20;
   int hi = 0;
 
 
-  int minOffset = 30;   
-  int maxOffset = 100;  
+  int minOffset = 30;
+  int maxOffset = 100;
   int servoOffset = map(heightPercentage, 0, 100, minOffset, maxOffset);
   int servopos = 180;
 
@@ -159,7 +159,7 @@ void Recon::jump() {
   delay(900);
 }
 
-void Recon::sit(){
+void Recon::sit() {
   int ap = 20;
   int hi = 50;
   int position[] = { 90 + ap, 90 - ap, 90 - hi, 90 + hi, 90 - ap, 90 + ap, 90 + hi, 90 - hi };
@@ -169,56 +169,82 @@ void Recon::sit(){
     }
   }
 }
-void Recon::wheelmode(){
+void Recon::wheelmode() {
 
   int ap = 90;
-  int hi = 50;
-  int T = 400;
+  int T = 1000;
   float period[] = { T, T, T, T, T, T, T, T };
   int amplitude[] = { 0, 0, 0, 0, 0, 0, 0, 0 };
   int offset[] = {
-    90 + ap, 
-    90 - ap, 
-    90 - ap, 
+    90 + ap,
+    90 - ap,
+    90 - ap,
     90 + ap,
 
-    90 + hi , 
-    90 - hi, 
-    90 + ap, 
+    90 - ap,
+    90 + ap,
+
+    90 + ap,
     90 - ap
   };
 
   int phase[] = { 0, 0, 0, 0, 0, 0, 0, 0 };
 
   execute(1, period, amplitude, offset, phase);
-
 }
 
-void Recon::crabstand(){
+void Recon::sitwiggle() {
+  int ap = 90;
+  int hi = 90;
+  int ti = -20;
+  int T = 400;
+  float period[] = { T, T, T, T, T, T, T, T };
+  int amplitude[] = { 0, 0, 0, 0, 30, 30, 0, 0 };
+  //int amplitude[] = { 0, 0, 20, 20, 0, 0, 0, 0 };
+  
+  int offset[] = {
+    90 + ap,
+    90 - ap,
+    90 - ap,
+    90 + ap,
+
+    90 - hi,
+    90 + hi,
+    90 + ti,
+    90 - ti
+  };
+  int phase[] = { 0, 0, 90, 180, 0, 0, 0, 0 };
+
+  execute(5, period, amplitude, offset, phase);
+  
+  int amplitude2[] = { 0, 0, 50, 50, 0, 0, 0, 0 };
+  execute(5, period, amplitude2, offset, phase);
+}
+
+void Recon::crabstand() {
   int ap = 90;
   int hi = 0;
   int T = 400;
   float period[] = { T, T, T, T, T, T, T, T };
   int amplitude[] = { 0, 0, 0, 0, 0, 0, 0, 0 };
   int offset[] = {
-    90 + ap, 
-    90 - ap, 
-    90 - ap, 
+    90 + ap,
+    90 - ap,
+    90 - ap,
     90 + ap,
 
-    90 + hi , 
-    90 - hi, 
-    90 + ap, 
+    90 + hi,
+    90 - hi,
+    90 + ap,
     90 - ap
   };
 
   int phase[] = { 0, 0, 0, 0, 0, 0, 0, 0 };
 
   execute(1, period, amplitude, offset, phase);
-
 }
 
-void Recon::twerk(){
+void Recon::twerk() {
   //Twerk
   float steps = 3;
   float T = 550;
@@ -230,8 +256,8 @@ void Recon::twerk(){
   int front_x = 0;
   float period[] = { T, T, T, T, T, T, T, T };
   int amplitude[] = { x_amp, x_amp, x_amp, x_amp, x_amp, x_amp, z_amp, z_amp };
-  int offset[] = { 90 ,
-                   90 ,
+  int offset[] = { 90,
+                   90,
                    90 - hi,
                    90 + hi,
                    90 + 30,
@@ -246,25 +272,25 @@ void Recon::twerk(){
 //Custom Functions
 
 
-void Recon::turnR(float steps, float T=600){
-    int x_amp = 15;
-    int z_amp = 15;
-    int ap = 15;
-    int hi = 23;
-    float period[] = {T, T, T, T, T, T, T, T};
-    int amplitude[] = {x_amp,x_amp,z_amp,z_amp,x_amp,x_amp,z_amp,z_amp};
-    int offset[] = {90+ap,90-ap,90-hi,90+hi,90-ap,90+ap,90+hi,90-hi};
-    int phase[] = {0,180,90,90,180,0,90,90};
-
-    execute(steps, period, amplitude, offset, phase);
-}
-
-
 void Recon::turnL(float steps, float T = 600) {
   int x_amp = 15;
   int z_amp = 15;
   int ap = 15;
-  int hi = 10;
+  int hi = 23;
+  float period[] = { T, T, T, T, T, T, T, T };
+  int amplitude[] = { x_amp, x_amp, z_amp, z_amp, x_amp, x_amp, z_amp, z_amp };
+  int offset[] = { 90 + ap, 90 - ap, 90 - hi, 90 + hi, 90 - ap, 90 + ap, 90 + hi, 90 - hi };
+  int phase[] = { 0, 180, 90, 90, 180, 0, 90, 90 };
+
+  execute(steps, period, amplitude, offset, phase);
+}
+
+
+void Recon::turnR(float steps, float T = 600) {
+  int x_amp = 15;
+  int z_amp = 15;
+  int ap = 15;
+  int hi = 23;
   float period[] = { T, T, T, T, T, T, T, T };
   int amplitude[] = { x_amp, x_amp, z_amp, z_amp, x_amp, x_amp, z_amp, z_amp };
   int offset[] = { 90 + ap, 90 - ap, 90 - hi, 90 + hi, 90 - ap, 90 + ap, 90 + hi, 90 - hi };
@@ -450,32 +476,58 @@ void Recon::pushUp(float steps, float T = 1000) {
   int z_amp = 40;
   int x_amp = 25;
   int hi = 30;
+  int ap = 80;
   float period[] = { T, T, T, T, T, T, T, T };
   int amplitude[] = { 0, 0, z_amp, z_amp, 0, 0, 0, 0 };
-  int offset[] = { 90 + x_amp, 90 - x_amp, 90 - hi, 90 + hi, 90, 90, 90 + hi, 90 - hi };
+  int offset[] = {
+    90 + x_amp,
+    90 - x_amp,
+    90 - hi,
+    90 + hi,
+    90 - ap,
+    90 + ap,
+    90 + hi,
+    90 - hi
+  };
+
   int phase[] = { 0, 0, 180, 0, 0, 0, 180, 0 };
 
   execute(steps, period, amplitude, offset, phase);
 }
 
-void Recon::hello() {
-  float sentado[]={90+15,90-15,90-65,90+65,90+20,90-20,90+10,90-10};
-    moveServos(150, sentado);
-    delay(200);
+void Recon::hello(int T) {
+  // float sentado[]={90+15,90-15,90-65,90+65,90+20,90-20,90+10,90-10};
+  //   moveServos(150, sentado);
+  //   delay(200);
 
-    int z_amp = 40;
-    int x_amp = 60;
-    int T=350;
-    float period[] = {T, T, T, T, T, T, T, T};
-    int amplitude[] = {0,50,0,50,0,0,0,0};
-    int offset[] = {90+15,40,90-65,90,90+20,90-20,90+10,90-10};
-    int phase[] = {0,0,0,90,0,0,0,0};
+  int z_amp = 40;
+  int x_amp = 60;
+  int ap = 10;
+  int hi = 70;
+  float period[] = { T, T, T, T, T, T, T, T };
+  //int amplitude[] = { 0, 0, 0, 0, 0, 0, 0,0 };
+  int amplitude[] = { 0, 50, 30, 0, 0, 0, 0,0 };
 
-    execute(4, period, amplitude, offset, phase);
+  int offset[] = {
+    90 + 15,
+    40,
 
-    float goingUp[]={160,20,90,90,90-20,90+20,90+10,90-10};
-    moveServos(500, goingUp);
-    delay(200);
+    90 - 90,
+    90,
+
+    90 + ap,
+    90 - ap,
+
+    90 + hi,
+    90 - hi
+  };
+  int phase[] = { 0, 180, 90, 0, 0, 0, 0, 0 };
+
+  execute(4, period, amplitude, offset, phase);
+
+  // float goingUp[]={160,20,90,90,90-20,90+20,90+10,90-10};
+  // moveServos(500, goingUp);
+  // delay(200);
 }
 
 
