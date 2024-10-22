@@ -246,8 +246,8 @@ void Recon::crabstand() {
 
 void Recon::twerk() {
   //Twerk
-  float steps = 3;
-  float T = 550;
+  float steps = 13;
+  float T = 350;
   int x_amp = 0;
   int z_amp = 35;
   int ap = 20;
@@ -260,11 +260,12 @@ void Recon::twerk() {
                    90,
                    90 - hi,
                    90 + hi,
-                   90 + 30,
-                   90 - 30,
+                   90 - 90,
+                   90 + 90,
                    90 + hi,
                    90 - hi };
-  int phase[] = { 0, 0, 90, 270, 180, 180, 270, 90 };
+  // int phase[] = { 0, 0, 90, 270, 90, 270, 90, 90 };  //Can be used for running 
+  int phase[] = { 0, 0, 90, 270, 90, 270, 270, 90 };
 
   execute(steps, period, amplitude, offset, phase);
 }

@@ -85,12 +85,13 @@ void setup() {
   randomSeed(analogRead(A7)); // getting seed for random
   robot.init();
   delay(2000);
+  systemservices();
 }
 
 void loop() {
 
   //RC_Control();   //uncomment this line if you want to control with the RC : "Note" if you uncomment this and rc is not bind the robot will puckup garbage reading and move randomly.
-
+  
   if (auto_mode) {
     if (random_walk)
       auto_gaits(0);
@@ -117,6 +118,31 @@ void serialEvent() {
     if (taken) 
       cmd = tmp;
   }
+}
+
+void systemservices(){
+   delay(5000);
+  //robot.hello(Speed);
+  //delay(1000);
+  robot.walk(1,6,Speed);
+  //delay(1000);
+  robot.walk(0,6,Speed);
+  //delay(1000);
+  robot.turnR(5, Speed);
+  //delay(1000);
+  robot.turnL(5, Speed);
+  //delay(1000);
+  Speed = 1000;
+  robot.pushUp(5, Speed);
+  Speed = 400;
+  //delay(1000);
+  robot.upDown(4, Speed);
+  Speed = 500; 
+  //delay(1000);
+  robot.sitwiggle();
+  robot.twerk();
+  //delay(1000);
+  robot.home();
 }
 
 // types of walks, read cmd from serial
