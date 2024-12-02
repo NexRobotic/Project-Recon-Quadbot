@@ -52,6 +52,61 @@ void Recon::init() {
 
 // Custom Functions
 
+
+void Recon::myfunction(float steps, float T) {
+
+
+  int offset[] = {
+    90, // Front left shoulder servo 2
+    90,  // Front right shoulder servo 8
+
+    90,  // Front left leg servo 3
+    90,  // Front right leg servo 9
+
+    90,  // Rear left Shoulder servo 4
+    90,  // Rear right Shoulder servo 6
+
+    90,  // Rear left leg servo 5
+    90   // Rear right leg servo 7 
+  }; 
+
+  float period[] = { T, T, T, T, T, T, T, T };
+
+  int amplitude[] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+  
+  
+  int phase[] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+
+  execute(steps, period, amplitude, offset, phase);
+}
+
+
+void Recon::pushUp(float steps, float T = 1000) {
+  int z_amp = 40;
+  int x_amp = 25;
+  int hi = 30;
+  int ap = 80;
+
+  float period[] = { T, T, T, T, T, T, T, T };
+
+  int amplitude[] = { 0, 0, z_amp, z_amp, 0, 0, 0, 0 };
+
+  int offset[] = {
+    90 + x_amp,
+    90 - x_amp,
+    90 - hi,
+    90 + hi,
+    90 - ap,
+    90 + ap,
+    90 + hi,
+    90 - hi
+  };
+
+  int phase[] = { 0, 90, 180, 0, 0, 0, 0, 0 };
+
+  execute(steps, period, amplitude, offset, phase);
+}
+
 void Recon::bodyRight(float steps, float T = 600) {
   int x_amp = 35;
   int z_amp = 15;
@@ -201,7 +256,7 @@ void Recon::sitwiggle() {
   float period[] = { T, T, T, T, T, T, T, T };
   int amplitude[] = { 0, 0, 0, 0, 30, 30, 0, 0 };
   //int amplitude[] = { 0, 0, 20, 20, 0, 0, 0, 0 };
-  
+
   int offset[] = {
     90 + ap,
     90 - ap,
@@ -216,7 +271,7 @@ void Recon::sitwiggle() {
   int phase[] = { 0, 0, 90, 180, 0, 0, 0, 0 };
 
   execute(5, period, amplitude, offset, phase);
-  
+
   int amplitude2[] = { 0, 0, 50, 50, 0, 0, 0, 0 };
   execute(5, period, amplitude2, offset, phase);
 }
@@ -264,7 +319,7 @@ void Recon::twerk() {
                    90 + 90,
                    90 + hi,
                    90 - hi };
-  // int phase[] = { 0, 0, 90, 270, 90, 270, 90, 90 };  //Can be used for running 
+  // int phase[] = { 0, 0, 90, 270, 90, 270, 90, 90 };  //Can be used for running
   int phase[] = { 0, 0, 90, 270, 90, 270, 270, 90 };
 
   execute(steps, period, amplitude, offset, phase);
@@ -473,28 +528,7 @@ void Recon::upDown(float steps, float T = 3000) {
 }
 
 
-void Recon::pushUp(float steps, float T = 1000) {
-  int z_amp = 40;
-  int x_amp = 25;
-  int hi = 30;
-  int ap = 80;
-  float period[] = { T, T, T, T, T, T, T, T };
-  int amplitude[] = { 0, 0, z_amp, z_amp, 0, 0, 0, 0 };
-  int offset[] = {
-    90 + x_amp,
-    90 - x_amp,
-    90 - hi,
-    90 + hi,
-    90 - ap,
-    90 + ap,
-    90 + hi,
-    90 - hi
-  };
 
-  int phase[] = { 0, 0, 180, 0, 0, 0, 180, 0 };
-
-  execute(steps, period, amplitude, offset, phase);
-}
 
 void Recon::hello(int T) {
   // float sentado[]={90+15,90-15,90-65,90+65,90+20,90-20,90+10,90-10};
@@ -507,7 +541,7 @@ void Recon::hello(int T) {
   int hi = 70;
   float period[] = { T, T, T, T, T, T, T, T };
   //int amplitude[] = { 0, 0, 0, 0, 0, 0, 0,0 };
-  int amplitude[] = { 0, 50, 30, 0, 0, 0, 0,0 };
+  int amplitude[] = { 0, 50, 30, 0, 0, 0, 0, 0 };
 
   int offset[] = {
     90 + 15,

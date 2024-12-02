@@ -85,7 +85,13 @@ void setup() {
   randomSeed(analogRead(A7)); // getting seed for random
   robot.init();
   delay(2000);
-  systemservices();
+
+// uncomment this function (line 90) if you want to run your custom function
+// robot.myfunction(5,600); delay(5000);
+
+
+ systemservices();
+
 }
 
 void loop() {

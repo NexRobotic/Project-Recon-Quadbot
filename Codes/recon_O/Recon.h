@@ -27,6 +27,7 @@ class Recon {
     void crabstand();
     void twerk();
     void sitwiggle();
+    void myfunction(float steps, float T);
     //Custom Function
 
     void init();
