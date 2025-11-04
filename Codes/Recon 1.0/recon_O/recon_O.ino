@@ -127,15 +127,15 @@ void serialEvent() {
 }
 
 void systemservices(){
-   delay(5000);
+  //delay(5000);
   //robot.hello(Speed);
-  //delay(1000);
+  delay(100);
   robot.walk(1,6,Speed);
-  //delay(1000);
+  //delay(50);
   robot.walk(0,6,Speed);
-  //delay(1000);
+  //delay(100);
   robot.turnR(5, Speed);
-  //delay(1000);
+  //delay(100);
   robot.turnL(5, Speed);
   //delay(1000);
   Speed = 1000;

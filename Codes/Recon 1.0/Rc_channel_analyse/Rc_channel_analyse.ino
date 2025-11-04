@@ -1,5 +1,5 @@
 // Define the pins for each channel
-const int channelPins[] = {A1, A2, A3, A4, A5, A6};
+const int channelPins[] = {A0, A1, A3, A4, A5, A6};
 const int numChannels = 6;
 
 // Variables to store the pulse width of each channel
