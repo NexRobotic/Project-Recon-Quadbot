@@ -19,10 +19,12 @@ Recon is a quadruped robot.
 Component List 
 
 - Arduino Nano
-- 3x 3.7v LiPo battery 
-- UBEC Switch DC-DC converter
-- 8x SG90 micro servos
-- Custom Solder board (PCB board) or you can buy nano expansion shield goto Recon instruction file to take a look 
+- Arduino Nano Expansion Board 
+- 2 x 3.7v 18650 Cell 
+- 1 Battery Holder (2 cell)
+- ON OFF Switch 
+- 9 x SG90 micro servos
+- 1 Ultrasonic Sensor 
 - A bunch of wires
 - Flysky 6 channel RC controler 
 - faith
